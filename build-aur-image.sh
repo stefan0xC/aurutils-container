@@ -22,6 +22,8 @@ LINESTART=$(buildah run $container grep -nr "\[custom\]" /etc/pacman.conf | cut 
 LINEEND=$((LINESTART+2))
 buildah run $container sed -i "${LINESTART},${LINEEND} s/#//" /etc/pacman.conf
 
+buildah run $container chown -R user:user /home
+
 echo "commit image"
 buildah commit $container archlinux-aurutils
 buildah rm $container
