@@ -4,7 +4,7 @@ script_dir=$(dirname "$0")
 
 aur_run()
 {
-	sudo podman run \
+	podman run \
 		-v /srv/aur/repo/custom:/home/custompkgs \
 		-v /srv/aur/gpg:/home/user/gpg \
 		-v $script_dir/entrypoint.sh:/opt/entrypoint.sh \
