@@ -8,8 +8,8 @@ CUSTOM_REPO_DIR=${CUSTOM_REPO_DIR:-$SRV_DIR/aur/repo/custom}
 PACMAN_GNUPG_DIR=${PACMAN_GNUPG_DIR:-$SRV_DIR/aur/pacman_gnupg}
 PACMAN_CACHE_DIR=${PACMAN_CACHE_DIR:-$SRV_DIR/aur/cache}
 PACMAN_DBSYNC_DIR=${PACMAN_DBSYNC_DIR:-$SRV_DIR/aur/sync}
-PUBLIC_KEY=${PUBLIC_KEY_PATH:-public.key}
-PRIVATE_KEY=${PRIVATE_KEY_PATH:-private.key}
+PUBLIC_KEY=${PUBLIC_KEY_PATH:-$script_dir/public.key}
+PRIVATE_KEY=${PRIVATE_KEY_PATH:-$script_dir/private.key}
 
 
 # create the directories if the don't exist

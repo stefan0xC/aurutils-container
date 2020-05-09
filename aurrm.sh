@@ -1,6 +1,7 @@
 #!/bin/bash
 
-if [ $# -eq 0 ] then
+if [ $# -eq 0 ]
+then
     echo "No package"
     exit -1
 fi
