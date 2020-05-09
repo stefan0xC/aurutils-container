@@ -12,7 +12,7 @@ what is needed?
 build a container
 -----------------
 
- 1. install aurutils from aur [TODO: build it if you don't supply `AURUTILS_URL`]
+ 1. install aurutils from aur. it should be built if you don't supply `AURUTILS_PACKAGE_FILE`
  2. configure custom repository
     add [custom] section to /etc/pacman.conf
  3. add user
