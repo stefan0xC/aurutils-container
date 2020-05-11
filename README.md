@@ -50,7 +50,7 @@ On the first run, after creating the image with `build-aur-image.sh`, you should
   from the repository.
 * `./run-bash.sh` is a wrapper to run bash for testing, debugging and maintenance purposes.
 * `./cmd.sh` defines how podman is run and sets the volume paths and other configuration for each command.
-* `./build-aur-image.sh` creates a new container image based on archlinux and installs aurutils-git from AUR.
+* `./build-aur-image.sh` creates a new container image based on archlinux and installs aurutils from AUR.
 
 NOTE: If you don't want to use **custom** as the repository name, you need to adapt the following scripts:
 

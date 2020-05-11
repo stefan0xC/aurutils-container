@@ -12,14 +12,15 @@ buildah run $container sed -i "$ a user ALL=(ALL) NOPASSWD: ALL" /etc/sudoers
 echo "install aurutils"
 if [ -z "$AURUTILS_PACKAGE_FILE" ]
 then
-    buildah copy --chown user:user $container https://aur.archlinux.org/cgit/aur.git/snapshot/aurutils-git.tar.gz /tmp/aurutils-git.tar.gz
+    buildah copy --chown user:user $container https://aur.archlinux.org/cgit/aur.git/snapshot/aurutils.tar.gz /tmp/aurutils.tar.gz
     buildah config --workingdir /tmp $container
-    buildah run --user user $container tar xzf aurutils-git.tar.gz
-    buildah config --workingdir /tmp/aurutils-git $container
-    buildah run --user user $container makepkg -s -i --noconfirm 
+    buildah run --user user $container tar xzf aurutils.tar.gz
+    buildah config --workingdir /tmp/aurutils $container
+    buildah run --user user $container gpg --recv-keys DBE7D3DD8C81D58D0A13D0E76BC26A17B9B7018A
+    buildah run --user user $container makepkg -s -i --noconfirm
 else
-    buildah copy $container $AURUTILS_PACKAGE_FILE /tmp/aurutils-git.pkg.tar.xz
-    buildah run $container pacman -U /tmp/aurutils-git.pkg.tar.xz --noconfirm
+    buildah copy $container $AURUTILS_PACKAGE_FILE /tmp/aurutils.pkg.tar.xz
+    buildah run $container pacman -U /tmp/aurutils.pkg.tar.xz --noconfirm
 fi
 
 echo "remove package cache"
