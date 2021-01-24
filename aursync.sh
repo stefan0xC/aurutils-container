@@ -9,4 +9,4 @@ then
 	exit -1
 fi
 
-aur_run aur sync -R -r -s "$@"
+aur_run aur sync -R -r -S --noconfirm "$@"

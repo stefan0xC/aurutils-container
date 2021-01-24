@@ -2,8 +2,8 @@
 
 container=$(buildah from archlinux)
 
-echo "pacman -Syu devtools pacman-contrib base-devel vi"
-buildah run $container pacman -Syu devtools pacman-contrib base-devel vi --noconfirm
+echo "pacman -Syu devtools pacman-contrib base-devel vim vifm"
+buildah run $container pacman -Syu devtools pacman-contrib base-devel vim vifm --noconfirm --needed
 
 echo "create user"
 buildah run $container useradd -m user
@@ -28,6 +28,9 @@ buildah run $container pacman -Sc --noconfirm
 
 echo "create /home/custompkgs"
 buildah run $container install -d /home/custompkgs -o user -g user
+echo "copy pacman-extra.conf from devtools"
+buildah run $container cp /usr/share/devtools/pacman-extra.conf /etc/aurutils/pacman-custom.conf
+
 echo "enable custom repo"
 LINESTART=$(buildah run $container grep -nr "\[custom\]" /etc/pacman.conf | cut -d : -f1)
 LINEEND=$((LINESTART+2))
