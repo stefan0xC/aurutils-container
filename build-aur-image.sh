@@ -1,8 +1,8 @@
 #!/bin/bash
 
-container=$(buildah from archlinux)
+container=$(buildah from archlinux:base-devel)
 
-echo "pacman -Syu devtools pacman-contrib base-devel vim vifm"
+echo "pacman -Syu devtools pacman-contrib vim vifm"
 buildah run $container pacman -Syu devtools pacman-contrib base-devel vim vifm --noconfirm --needed
 
 echo "create user"
